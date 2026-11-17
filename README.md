@@ -1,4 +1,4 @@
-# GarageDock
+# GarageDock - Exercice initiation docker.
 
 Prise de rendez-vous en ligne pour un garage. Node.js, PostgreSQL, Docker.
 
