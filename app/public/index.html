@@ -3,31 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Garagiste - Votre garage en ligne</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; color: #222; }
-    h1 { margin-bottom: .2rem; }
-    .etat { padding: .7rem 1rem; border-radius: 6px; margin: 1rem 0; font-weight: bold; }
-    .ok { background: #e0f2f1; color: #00695c; }
-    .ko { background: #fdecea; color: #b71c1c; }
-    .conteneur { color: #666; font-size: .9rem; }
-    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-    th, td { text-align: left; padding: .4rem; border-bottom: 1px solid #ddd; }
-    form { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-    input, button { padding: .5rem; font: inherit; }
-    button { grid-column: span 2; cursor: pointer; }
-    #message { color: #b71c1c; }
-  </style>
+  <title>Votre garage en ligne</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-  <h1>Prendre rendez-vous au garage</h1>
-  <p class="conteneur">Rendez-vous atelier : entretien, réparation, contrôle (données fictives)</p>
+  <h1>Votre garage en ligne</h1>
+  <div id="etat" class="etat ko">Etat actuel de la base : ...</div>
+  <p class="conteneur">Cette page est servie par le  : <strong id="conteneur">...</strong></p>
 
-  <div id="etat" class="etat ko">Base : ...</div>
-  <p class="conteneur">Cette page est servie par le conteneur : <strong id="conteneur">...</strong></p>
-
-  <h2>Rendez-vous prévus</h2>
+  <h2>Vos rendez-vous prévus</h2>
   <table>
     <thead><tr><th>Jour</th><th>Créneau</th><th>Véhicule</th><th>Prestation</th></tr></thead>
     <tbody id="liste"><tr><td colspan="4">Chargement...</td></tr></tbody>

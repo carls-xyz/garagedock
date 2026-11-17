@@ -1,0 +1,56 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  padding: 48px 20px;
+  max-width: 720px;
+  background: #fff;
+  color: #111;
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+h1 { font-size: 24px; font-weight: 600; margin: 0 0 24px; }
+h2 { font-size: 16px; font-weight: 600; margin: 40px 0 12px; }
+
+.etat {
+  padding: 10px 14px;
+  border: 1px solid #111;
+  font-size: 14px;
+}
+.etat.ko { border-style: dashed; color: #666; }
+
+.conteneur { margin: 8px 0 0; font-size: 13px; color: #666; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 10px 8px; text-align: left; border-bottom: 1px solid #e5e5e5; }
+th { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: #666; }
+
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+input, button {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: #111;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0;
+}
+input:focus { outline: none; border-color: #111; }
+
+button {
+  grid-column: span 2;
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  cursor: pointer;
+}
+button:hover { background: #333; }
+
+#message { font-size: 14px; }
+#message:not(:empty) { padding: 10px 14px; border: 1px dashed #111; }
+
+@media (max-width: 560px) {
+  form { grid-template-columns: 1fr; }
+  button { grid-column: auto; }
+}
