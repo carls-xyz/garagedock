@@ -9,15 +9,17 @@ body {
   font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-h1 { font-size: 24px; font-weight: 600; margin: 0 0 24px; }
+h1 { font-size: 24px; font-weight: 600; margin: 0 0 24px;}
 h2 { font-size: 16px; font-weight: 600; margin: 40px 0 12px; }
 
 .etat {
   padding: 10px 14px;
-  border: 1px solid #111;
+  border: 1px solid #2f4a2a;
+  background-color: #8fb58a;
+  color: #13210f;
   font-size: 14px;
 }
-.etat.ko { border-style: dashed; color: #666; }
+.etat.ko { border-style: dashed; color: #9a0000; }
 
 .conteneur { margin: 8px 0 0; font-size: 13px; color: #666; }
 
@@ -40,12 +42,12 @@ input:focus { outline: none; border-color: #111; }
 
 button {
   grid-column: span 2;
-  background: #111;
+  background: #127600;
   color: #fff;
-  border-color: #111;
+  border-color: #106200;
   cursor: pointer;
 }
-button:hover { background: #333; }
+button:hover { background: #0b7200; }
 
 #message { font-size: 14px; }
 #message:not(:empty) { padding: 10px 14px; border: 1px dashed #111; }

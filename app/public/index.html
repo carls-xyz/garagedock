@@ -12,19 +12,19 @@
   <div id="etat" class="etat ko">Etat actuel de la base : ...</div>
   <p class="conteneur">Cette page est servie par le  : <strong id="conteneur">...</strong></p>
 
-  <h2>Vos rendez-vous prévus</h2>
+  <h2>Vos rendez-vous prévus cette semaine</h2>
   <table>
-    <thead><tr><th>Jour</th><th>Créneau</th><th>Véhicule</th><th>Prestation</th></tr></thead>
+    <thead><tr><th>Date</th><th>Horaire</th><th>Véhicule</th><th>Besoin</th></tr></thead>
     <tbody id="liste"><tr><td colspan="4">Chargement...</td></tr></tbody>
   </table>
 
   <h2>Réserver un créneau</h2>
   <form id="formulaire">
-    <input name="salle" placeholder="Véhicule (ex. Clio IV - AB-123-CD)" required>
+    <input name="vehicule" placeholder="Véhicule (ex. Clio IV - AB-123-CD)" required>
     <input name="jour" type="date" required>
     <input name="creneau" placeholder="Créneau (ex. 08:30 - 10:00)" required>
-    <input name="motif" placeholder="Prestation (ex. Vidange, pneus, freins)" required>
-    <button type="submit">Réserver le rendez-vous</button>
+    <input name="prestation" placeholder="Prestation (ex. Vidange, pneus, freins)" required>
+    <button type="submit">Prendre le rendez-vous</button>
   </form>
   <p id="message"></p>
 
@@ -50,7 +50,7 @@
       }
       for (const r of reservations) {
         const ligne = document.createElement("tr");
-        for (const valeur of [r.jour, r.creneau, r.salle, r.motif]) {
+        for (const valeur of [r.jour, r.creneau, r.vehicule, r.prestation]) {
           const cellule = document.createElement("td");
           cellule.textContent = valeur;
           ligne.appendChild(cellule);
