@@ -22,7 +22,12 @@ pool.on("error", (err) => {
 let baseConnectee = false;
 let dernierMessage = "";
 
+// En base, les colonnes gardent leurs noms d'origine :
+//   salle = le véhicule, motif = la prestation.
+// L'API, elle, parle de "vehicule" et "prestation" (renommés avec AS dans les requêtes).
+
 // Quelques rendez-vous inventés, ajoutés si la table est vide.
+// [véhicule, jour, créneau, prestation]
 const RENDEZ_VOUS_DE_DEPART = [
   ["Clio IV - AB-123-CD", "2026-10-12", "08:30 - 10:00", "Vidange + filtre à huile"],
   ["Peugeot 308 - EF-456-GH", "2026-10-12", "10:00 - 12:00", "Plaquettes de frein avant"],
@@ -96,7 +101,7 @@ app.get("/api/reservations", async (req, res) => {
   }
   try {
     const { rows } = await pool.query(
-      "SELECT id, salle, to_char(jour, 'YYYY-MM-DD') AS jour, creneau, motif FROM reservations ORDER BY jour, creneau, id"
+      "SELECT id, salle AS vehicule, to_char(jour, 'YYYY-MM-DD') AS jour, creneau, motif AS prestation FROM reservations ORDER BY jour, creneau, id"
     );
     res.json(rows);
   } catch (err) {
@@ -109,14 +114,14 @@ app.post("/api/reservations", async (req, res) => {
   if (!baseConnectee) {
     return res.status(503).json({ erreur: "base non connectée" });
   }
-  const { salle, jour, creneau, motif } = req.body || {};
-  if (!salle || !jour || !creneau || !motif) {
+  const { vehicule, jour, creneau, prestation } = req.body || {};
+  if (!vehicule || !jour || !creneau || !prestation) {
     return res.status(400).json({ erreur: "véhicule, jour, créneau et prestation sont obligatoires" });
   }
   try {
     const { rows } = await pool.query(
-      "INSERT INTO reservations (salle, jour, creneau, motif) VALUES ($1, $2, $3, $4) RETURNING id, salle, to_char(jour, 'YYYY-MM-DD') AS jour, creneau, motif",
-      [salle, jour, creneau, motif]
+      "INSERT INTO reservations (salle, jour, creneau, motif) VALUES ($1, $2, $3, $4) RETURNING id, salle AS vehicule, to_char(jour, 'YYYY-MM-DD') AS jour, creneau, motif AS prestation",
+      [vehicule, jour, creneau, prestation]
     );
     res.status(201).json(rows[0]);
   } catch (err) {
